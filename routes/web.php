@@ -15,4 +15,6 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::inertia('/page', 'page.jsx');
+Route::resource('truck','App\Http\Controllers\TruckController');
+Route::resource('employee','App\Http\Controllers\EmployeeController');
+Route::resource('zone','App\Http\Controllers\ZoneController');

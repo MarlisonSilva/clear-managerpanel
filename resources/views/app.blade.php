@@ -9,7 +9,7 @@
     <title>Clear - manager</title>
     @inertiaHead
 </head>
-<body>
+<body class="bg-theme bg-theme1">
     @inertia
 
     <!-- JQuery js-->

@@ -7,5 +7,11 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// App Styles
-@import '../css/app.css';
+// Estilo geral da aplicação
+@import '../css/app-style.css';
+
+@import '../css/sidebar-menu.css';
+@import '../css/pace.min.css';
+@import '../css/animate.css';
+@import '../css/icons.css';
+

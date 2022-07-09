@@ -13,4 +13,5 @@ createInertiaApp({
     setup({ el, App, props }) {
         render(<App {...props} />, el)
     },
+    component: components => require(`./components/${components}`),
 });

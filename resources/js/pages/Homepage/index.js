@@ -1,13 +1,17 @@
-import { React } from "react";
-import { Link } from "@inertiajs/inertia-react";
+import React from 'react';
+import Example from '../../components/Example';
+import Layout from '../../components/Layout';
 
 const Homepage = () => {
+    const page = <div>
+        <h2>Teste</h2>
+        <h1>Teste</h1>
+        <Example />
+    </div>;
+
     return (
-        <div>
-            <h1>Gerência - CLEAR</h1>
-            <p>Gerencie seus caminhões de lixo com qualidade e organização.</p>
-            <Link href="/page" method="get" as="a" type="button">Abrir uma página.</Link>
-        </div>
+        <Layout brand={ page }/>
     );
 };
+
 export default Homepage;
