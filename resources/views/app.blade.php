@@ -1,33 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ mix('assets/css/app.css') }}" rel="stylesheet" />	
+    <title>Clear - manager</title>    
+    @viteReactRefresh
+    @vite('resources/css/animate.css')
+    @vite('resources/css/app-style.css')
+    @vite('resources/css/icons.css')
+    @vite('resources/css/pace.min.css')
+    @vite('resources/css/sidebar-menu.css')
 
-    <title>Clear - manager</title>
-    @inertiaHead
+    @vite('resources/js/app.jsx')
+    @inertiaHead    
 </head>
 <body class="bg-theme bg-theme1">
     @inertia
 
     <!-- JQuery js-->
-    <script src="{{ asset('assets/js/jquery.min.js')}}"></script>
-
-    <!-- Bootstrap js-->
-    <script src="{{ asset('assets/js/bootstrap.js')}}"></script>
-
-    <!-- app js -->
-    <script src="{{ mix('assets/js/app.js') }}" defer></script>
-
-    <!-- simplebar js -->
-    {{-- <script src="{{ asset('assets/plugins/simplebar/js/simplebar.js') }}"></script> --}}
+    @vite('/public/assets/js/jquery.min.js')
+    
+    <!-- Bootstrap js-->    
+    {{-- @vite('resources/js/bootstrap.js') --}}
 
     <!-- sidebar-menu js -->
-    <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
+    @vite('/public/assets/js/sidebar-menu.js')
 
     <!-- Custom scripts -->
-    <script src="{{ asset('assets/js/app-script.js') }}" defer></script> 
+    @vite('/public/assets/js/app-script.js')
+
 </body>
 </html>
