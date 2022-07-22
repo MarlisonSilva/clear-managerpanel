@@ -1,6 +1,5 @@
-import '../sass/app.scss'; // importando SASS
-// import './bootstrap'; // importando js
-// import * as bootstrap from "bootstrap";
+// import '../sass/app.scss'; // importando SASS
+// import '~bootstrap/dist/js/bootstrap.bundle.js'; // importando js
 import React from "react";
 import { render } from "react-dom";
 import { createInertiaApp } from "@inertiajs/inertia-react";
