@@ -2,18 +2,18 @@ import React from 'react';
 import Example from '../../components/Example';
 import Layout from '../../components/Layout';
 
-const zoneIndex = () => {
+const zoneIndex = (props) => {
     const page = 
-    <div class="row">
-        <div class="col lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title"  style={ {color: 'black'} }>Zonas</h5>
+    <div className="row">
+        <div className="col lg-6">
+            <div className="card">
+                <div className="card-header">
+                    <h5 className="card-title"  style={ {color: 'black'} }>Zonas</h5>
                 </div>
-                <div class="card-body">
+                <div className="card-body">
                 
-                    <div class="table-responsive">
-                        <table class="table table-responsive">
+                    <div className="table-responsive">
+                        <table className="table table-responsive">
                             <thead>
                                 <tr>
                                     <th scope="col">Nome da Zona</th>
@@ -54,7 +54,7 @@ const zoneIndex = () => {
     </div>;
 
     return (
-        <Layout brand={ page }/>
+        <Layout brand={ page } auth={props.auth}/>
     );
 }; 
 

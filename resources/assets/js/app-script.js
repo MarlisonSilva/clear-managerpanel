@@ -1,15 +1,16 @@
 $(function() {
-    "use strict";
-     
+  "use strict";
+    console.log('ready')
 	 
-//sidebar menu js
-$.sidebarMenu($('.sidebar-menu'));
+  //sidebar menu js
+  $.sidebarMenu($('.sidebar-menu'));
+  console.log($('.toggle-menu'));
 
-// === toggle-menu js
-$(".toggle-menu").on("click", function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-});	 
+  // === toggle-menu js
+  $(".toggle-menu").on("click", function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+});
 	   
 // === sidebar menu activation js
 

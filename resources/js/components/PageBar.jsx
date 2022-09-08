@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from '@inertiajs/inertia-react';
 
 function PageBar() {
+    
     return (
         <div>
             <div id="sidebar-wrapper" data-simplebar-auto-hide="true">
@@ -46,9 +48,9 @@ function PageBar() {
                 <nav className="navbar navbar-expand fixed-top">
                     <ul className="navbar-nav mr-auto align-items-center">
                         <li className="nav-item">
-                            <a href="#"className="nav-link toggle-menu">
+                            <Link href="#!" className="nav-link toggle-menu" onClick={ document.getElementById("wrapper").classList.toggle = 'toggled' }>
                                 <i className="icon-menu menu-icon"></i>
-                            </a>                                
+                            </Link>                          
                         </li>
                         <li className="nav-item">
                             <form className="search-bar">

@@ -1,20 +1,22 @@
-// import '../sass/app.scss'; // importando SASS
-// import '~bootstrap/dist/js/bootstrap.bundle.js'; // importando js
-import React from "react";
-import { render } from "react-dom";
-import { createInertiaApp } from "@inertiajs/inertia-react";
-import { InertiaProgress } from "@inertiajs/progress";
+// import './bootstrap';
+import '../css/app.css';
+// Import our custom CSS
+import '../sass/app.scss'
+
+import React from 'react';
+import { render } from 'react-dom';
+import { createInertiaApp } from '@inertiajs/inertia-react';
+import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-InertiaProgress.init({
-    color: '#ED3936',
-    showSpinner: true
-});
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
-    resolve: (name) => resolvePageComponent(`./Pages/${name}/index.jsx`, import.meta.glob('./Pages/**/*.jsx')),
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
     setup({ el, App, props }) {
-        render(<App {...props} />, el)
+        return render(<App {...props} />, el);
     },
-    component: (components) => resolvePageComponent(`./components/${components}.jsx`, import.meta.glob('./components/*.jsx')),
 });
+
+InertiaProgress.init({ color: '#4B5563' });

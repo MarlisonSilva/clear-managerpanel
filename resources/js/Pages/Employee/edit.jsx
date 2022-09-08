@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '../../components/Layout';
 
-function employeeEdit() {
+function employeeEdit(props) {
     const page = 
-        <div class="row">
+        <div className="row">
             <h1>EDIT</h1>
         </div>;
 
     return (
-        <Layout brand={ page }/>
+        <Layout brand={ page } auth={props.auth}/>
     );
 }
 

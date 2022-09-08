@@ -1,45 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clear - manager</title>    
-    
-    @vite('resources/sass/app.scss')
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @viteReactRefresh
-    @vite('resources/js/app.jsx')
+        <title inertia>{{ config('app.name', 'CLEAR') }}</title>
 
-    @inertiaHead    
-</head>
-<body class="bg-theme bg-theme1">
-    @inertia
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        @vite('resources/sass/app.scss')
 
-    <!-- JQuery js-->
-    {{-- @vite('/public/assets/js/jquery.min.js') --}}
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    
-    <!-- Bootstrap js-->    
-    {{-- @vite('resources/js/bootstrap.js') --}}
-    @vite('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
-    
-    <!-- sidebar-menu js -->
-    @vite('resources/assets/js/sidebar-menu.js')
+        <style>
+            .dropdown-toggle-nocaret::before {
+                display: none !important;
+            }
+        </style>
 
-    <!-- Custom scripts -->
-    @vite('resources/assets/js/app-script.js')
-    {{-- @vite('public/assets/js/app-teste.js') --}}
+        <!-- Scripts -->
+        @routes
+        @viteReactRefresh
+        @vite('resources/js/app.jsx')
+        @inertiaHead
+    </head>
+    <body class="bg-theme bg-theme1 font-sans antialiased">
+        @inertia
+        
+        <!-- JQuery js-->
+        {{-- @vite('/public/assets/js/jquery.min.js') --}}
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+        
+        <!-- Bootstrap js-->    
+        {{-- @vite('resources/js/bootstrap.js') --}}
+        @vite('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
+        
+        <!-- sidebar-menu js -->
+        @vite('resources/assets/js/sidebar-menu.js')
 
-    {{-- @vite('public/assets/js/app-teste.js') --}}
-    {{-- <script src="/public/assets/js/app-teste.js"></script> --}}
-    {{-- <script src="{{ asset('assets/js/app-teste.js') }}" defer></script>  --}}
+        <!-- Custom scripts -->
+        @vite('resources/assets/js/app-script.js')
+        {{-- @vite('public/assets/js/app-teste.js') --}}
 
-    <script>
-        $(function() {
-            console.log(document.getElementById('wrapper')) // não pega o wrapper
+        {{-- @vite('public/assets/js/app-teste.js') --}}
+        {{-- <script src="/public/assets/js/app-teste.js"></script> --}}
+        {{-- <script src="{{ asset('assets/js/app-teste.js') }}" defer></script>  --}}
 
-        });
-    </script>
-</body>
+    </body>
 </html>

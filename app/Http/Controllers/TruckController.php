@@ -14,7 +14,7 @@ class TruckController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Truck');
+        return Inertia::render('Truck/index');
 
     }
 

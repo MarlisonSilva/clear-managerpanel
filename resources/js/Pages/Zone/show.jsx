@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '../../components/Layout';
 
-function zoneShow() {
+function zoneShow(props) {
     const page = 
-        <div class="row">
+        <div className="row">
             <h1>SHOW</h1>
         </div>;
 
     return (
-        <Layout brand={ page }/>
+        <Layout brand={ page } auth={props.auth}/>
     );
 }
 
