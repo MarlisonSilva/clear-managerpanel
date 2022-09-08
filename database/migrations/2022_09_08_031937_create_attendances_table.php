@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('funcionarios', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
             $table->id()->unique();
-            $table->string('nome');
-            $table->string('matricula')->unique();
-            $table->string('cargaH');
-            $table->string('telefone');
+            $table->unsignedBigInteger('zon_id');            
+            $table->unsignedBigInteger('tru_id');
+            $table->datetime('date_start');
+            $table->datetime('date_end');
+            $table->foreign('zon_id')->references('id')->on('zones');
+            $table->foreign('tru_id')->references('id')->on('trucks');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionarios');
+        Schema::dropIfExists('attendances');
     }
 };

@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('caminhoes', function (Blueprint $table) {
+        Schema::create('operation_days', function (Blueprint $table) {
             $table->id()->unique();
-            $table->string('nome');
-            $table->string('status')->default('Não Ativo');
-            $table->string('quilometragem')->default('0');
-            $table->string('zonas');
-            $table->string('motorista');
-            $table->string('funcionarios');
-            $table->string('tempoativo')->default('0');
+            $table->char('operation_day', 45)->nullable($value = false);
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('caminhoes');
+        Schema::dropIfExists('operation_days');
     }
 };

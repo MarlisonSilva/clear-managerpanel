@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('zonas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->string('status')
-                ->default('Inativo');
-            $table->string('horario');
-            $table->string('porcentagem')
-                ->default('0%');
-            $table->string('funcionamento');
+        Schema::create('zon_op_days', function (Blueprint $table) {
+            $table->id()->unique();
+            $table->unsignedBigInteger('zon_id');
+            $table->unsignedBigInteger('opd_id');
+            $table->foreign('zon_id')->references('id')->on('zones');
+            $table->foreign('opd_id')->references('id')->on('operation_days');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('zonas');
+        Schema::dropIfExists('zon_op_days');
     }
 };
