@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\URL;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +16,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Employee/index');
+        $employees = Employee::all();
+         
+        return Inertia::render('Employee/index', [
+            'employees'=>$employees, 
+            'create_url' => URL::route('employee.create'),
+        ]);
     }
 
     /**
@@ -24,7 +31,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Employee/create');
     }
 
     /**
@@ -46,7 +53,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('Employee/show');
+
     }
 
     /**
@@ -57,7 +65,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Inertia::render('Employee/edit');
+
     }
 
     /**

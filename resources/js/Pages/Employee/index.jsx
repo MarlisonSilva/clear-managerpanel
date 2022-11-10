@@ -1,14 +1,29 @@
 import React from 'react';
 import Example from '../../components/Example';
 import Layout from '../../components/Layout';
+import { Link } from '@inertiajs/inertia-react';
+import { InertiaLink } from '@inertiajs/inertia-react';
 
-const employeeIndex = (props) => {
-    const page = 
+export default function employeeIndex(props, employees, create_url){
+    var employeesTable = '';
+    for (let i = 0; i < employees.length; i++) {
+        const employee = employees[i];
+        employeesTable += 
+        <tr>
+            <td>{ employee.name }</td>
+            <td>{ employee.matriculaion }</td>
+            <td>{ employee.workload }</td>
+            <td>Sim</td>
+        </tr>;     
+    }
+    console.log(create_url)
+    var page = 
     <div className="row">
         <div className="col lg-6">
             <div className="card">
                     <div className="card-header">
                         <h5 className="card-title"  style={ {color: 'black'} }>Funcionários</h5>
+                        <InertiaLink href={ route('employee.create') } className="btn btn-primary btn-sm">Criar funcionário</InertiaLink>
                     </div>                
                     <div className="card-body">
                 
@@ -21,31 +36,9 @@ const employeeIndex = (props) => {
                                     <th scope="col">Horário</th>
                                     <th scope="col">Localização?</th>
                                 </tr>
-                            </thead>    
+                            </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>Januario</td>
-                                    <td>111.111.111-11</td>
-                                    <td>7h até 16h</td>
-                                    <td>Sim</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Seu Madruga</td>
-                                    <td>222.222.222-22</td>
-                                    <td>8h até 18h</td>
-                                    <td>Não</td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td>Armando Cesar Coelho</td>
-                                    <td>333.333.333-33</td>
-                                    <td>9h até 20h</td>
-                                    <td>Sim</td>
-                                </tr>
-                            </tbody>
+                            <tbody dangerouslySetInnerHTML={{__html: employeesTable}}></tbody>
                         </table>
                     </div>  
                 </div>  
@@ -57,5 +50,3 @@ const employeeIndex = (props) => {
         <Layout brand={ page } auth={props.auth}/>
     );
 }; 
-
-export default employeeIndex;
