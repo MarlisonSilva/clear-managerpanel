@@ -1,50 +1,81 @@
 import React from 'react';
-import Example from '../../components/Example';
 import Layout from '../../components/Layout';
+import { Link } from '@inertiajs/inertia-react';
+import { InertiaLink } from '@inertiajs/inertia-react';
+import { Inertia } from '@inertiajs/inertia'
 
 const zoneIndex = (props) => {
-    const page = 
+    var zonesTable = [];
+    console.log(props.zones[0])
+    for (let i = 0; i < props.zones.length; i++) {
+        const zone = props.zones[i];
+        console.log(zonesTable)
+        if (zone.status)
+            var status = "Sim"
+        else 
+            var status = "Não"
+
+        zonesTable.push(
+        <tr>
+            <td>{ zone.name }</td>
+            <td>{ zone.hour_start_op }</td>
+            <td>{ zone.hour_end_op }</td>
+            <td>{ zone.percentage }%</td>
+            <td>{ status }</td>            
+            <td>
+                <div>
+                    <InertiaLink href={ route('zone.edit', zone.id) } className="btn btn-primary btn-sm mx-1">
+                        <i className="icon-pencil"></i> 
+                    </InertiaLink>
+
+                    <InertiaLink href={ route('zone.show', zone.id) } className="btn btn-primary btn-sm mx-1">
+                        <i className="icon-eye"></i>
+                    </InertiaLink>
+
+                    <Link onClick={ (e) => { e.preventDefault(); Inertia.delete('/zone/'+zone.id, ); } } className="btn btn-primary btn-sm mx-1">
+                        <i className="icon-trash"></i>
+                    </Link>
+                </div>
+            </td>
+        </tr>);
+    }
+
+    
+    var page = 
     <div className="row">
         <div className="col lg-6">
             <div className="card">
                 <div className="card-header">
-                    <h5 className="card-title"  style={ {color: 'black'} }>Zonas</h5>
-                </div>
-                <div className="card-body">
+                    <div className="row mt-2">
+                        <div className="col">
+                            <h3 style={{ color: 'black' }}>Zonas</h3>
+                        </div>
+                        <div className="col">
+                            <div className="card-action">
+                                <InertiaLink href={ route('zone.create') } className="btn btn-dark">
+                                    <i className="icon-plus"></i>
+                                </InertiaLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>         
+                    <div className="card-body">
                 
                     <div className="table-responsive">
                         <table className="table table-responsive">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nome da Zona</th>
-                                    <th scope="col">Bairros Contemplados</th>
-                                    <th scope="col">Caminhões Rodando</th>
-                                    <th scope="col">Dia da Semana</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Horário de início</th>
+                                    <th scope="col">Horário de término</th>
+                                    <th scope="col">Porcentagem</th>
+                                    <th scope="col">Ativo?</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
-                            </thead>    
+                            </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>Norte</td>
-                                    <td>Vila Cruzeiro, Cariri, Canadá</td>
-                                    <td>1</td>
-                                    <td>Terça/Quinta</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Leste</td>
-                                    <td>Estados Únidos, Brasília, China</td>
-                                    <td>1</td>
-                                    <td>Segunda/Sexta</td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td>Oeste</td>
-                                    <td>João 23, João 22, João 21</td>
-                                    <td>2</td>
-                                    <td>Segunta/Terça/Quarta</td>
-                                </tr>
+                                { zonesTable }
                             </tbody>
                         </table>
                     </div>  
@@ -52,7 +83,6 @@ const zoneIndex = (props) => {
             </div>
         </div>
     </div>;
-
     return (
         <Layout brand={ page } auth={props.auth}/>
     );

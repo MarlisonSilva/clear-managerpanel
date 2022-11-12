@@ -4,6 +4,11 @@ import Layout from '../../components/Layout';
 import { InertiaLink } from '@inertiajs/inertia-react';
 
 function truckShow(props) {
+    if (props.truck.status)
+        var status = "Sim";
+    else 
+        var status = "Não";
+
     const page = 
     <div className="row">
         <div className="col-12 col-lg-12">
@@ -29,7 +34,7 @@ function truckShow(props) {
                         <li>Nome: { props.truck.name }</li>
                         <li>Tempo ativo: { props.truck.activated_time }</li>
                         <li>Quilometrage: { props.truck.mileage } km</li>
-                        <li>Em funcionamento: { props.truck.status }</li>
+                        <li>Ativo? { status }</li>
                     </ul>          
                 </div>
             </div>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Zone;
+use App\Http\Requests\ZoneRequestStore;
+use App\Http\Requests\ZoneRequestUpdate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\URL;
 
 class ZoneController extends Controller
 {
@@ -14,8 +18,12 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Zone/index');
-
+        $zones = Zone::all();
+         
+        return Inertia::render('Zone/index', [
+            'zones'=>$zones, 
+            'create_url' => URL::route('zone.create'),
+        ]);
     }
 
     /**
@@ -25,7 +33,7 @@ class ZoneController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Zone/create');
     }
 
     /**
@@ -34,9 +42,10 @@ class ZoneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(ZoneRequestStore $request)
+    {    
+        Zone::create($request->validated());
+        return redirect()->route('zone.index');
     }
 
     /**
@@ -47,7 +56,8 @@ class ZoneController extends Controller
      */
     public function show($id)
     {
-        //
+        $zone = Zone::find($id);
+        return Inertia::render('Zone/show', ['zone'=>$zone]);
     }
 
     /**
@@ -58,7 +68,9 @@ class ZoneController extends Controller
      */
     public function edit($id)
     {
-        //
+        $zone = Zone::find($id);
+        return Inertia::render('Zone/edit', ['zone'=>$zone]);
+
     }
 
     /**
@@ -68,9 +80,12 @@ class ZoneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ZoneRequestUpdate $request, $id)
     {
-        //
+        $zone = Zone::find($id);
+        $zone->update($request->validated());
+        return redirect()->route('zone.index');
+
     }
 
     /**
@@ -81,6 +96,7 @@ class ZoneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Zone::find($id)->delete();
+        return redirect()->route('zone.index');
     }
 }

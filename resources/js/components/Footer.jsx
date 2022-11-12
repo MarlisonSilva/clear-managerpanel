@@ -6,7 +6,7 @@ function Footer() {
         <footer className="footer">
             <div className="container">
                 <div className="text-center">
-                    Copyright © 2018 Dashtreme Admin
+                    Copyright © 2022 CLEAR
                 </div>
             </div>
         </footer>

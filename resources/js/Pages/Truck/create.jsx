@@ -10,8 +10,6 @@ export default function truckCreate(props) {
 
     const [values, setValues] = useState({
         name: "",
-        matriculation: "",
-        workload: "",
     })
   
     function handleChange(e) {

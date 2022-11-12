@@ -9,8 +9,6 @@ function truckEdit(props) {
 
     const [values, setValues] = useState({
         name: props.truck.name,
-        matriculation: props.truck.matriculation,
-        workload: props.truck.workload,
     })
   
     function handleChange(e) {

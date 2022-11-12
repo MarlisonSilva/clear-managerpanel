@@ -67,7 +67,7 @@ const truckIndex = (props) => {
                                     <th scope="col">Nome</th>
                                     <th scope="col">Tempo ativo</th>
                                     <th scope="col">Quilometragem</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Ativo?</th>
                                     <th scope="col">Ações</th>
                                 </tr>
                             </thead>
