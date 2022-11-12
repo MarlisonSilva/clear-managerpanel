@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Truck;
+use App\Http\Requests\TruckRequestStore;
+use App\Http\Requests\TruckRequestUpdate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\URL;
 
 class TruckController extends Controller
 {
@@ -14,8 +18,12 @@ class TruckController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Truck/index');
-
+        $trucks = Truck::all();
+         
+        return Inertia::render('Truck/index', [
+            'trucks'=>$trucks, 
+            'create_url' => URL::route('truck.create'),
+        ]);
     }
 
     /**
@@ -25,7 +33,7 @@ class TruckController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Truck/create');
     }
 
     /**
@@ -34,9 +42,10 @@ class TruckController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(TruckRequestStore $request)
+    {    
+        Truck::create($request->validated());
+        return redirect()->route('truck.index');
     }
 
     /**
@@ -47,7 +56,8 @@ class TruckController extends Controller
      */
     public function show($id)
     {
-        //
+        $truck = Truck::find($id);
+        return Inertia::render('Truck/show', ['truck'=>$truck]);
     }
 
     /**
@@ -58,7 +68,9 @@ class TruckController extends Controller
      */
     public function edit($id)
     {
-        //
+        $truck = Truck::find($id);
+        return Inertia::render('Truck/edit', ['truck'=>$truck]);
+
     }
 
     /**
@@ -68,9 +80,12 @@ class TruckController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TruckRequestUpdate $request, $id)
     {
-        //
+        $truck = Truck::find($id);
+        $truck->update($request->validated());
+        return redirect()->route('truck.index');
+
     }
 
     /**
@@ -81,6 +96,7 @@ class TruckController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Truck::find($id)->delete();
+        return redirect()->route('truck.index');
     }
 }

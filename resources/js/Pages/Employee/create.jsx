@@ -1,73 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom';
 import Layout from '../../components/Layout';
 import { InertiaLink } from '@inertiajs/inertia-react';
+import { usePage } from '@inertiajs/inertia-react'
+import { Inertia } from '@inertiajs/inertia'
 
 export default function employeeCreate(props) {
+    const { errors } = usePage().props
+
+    const [values, setValues] = useState({
+        name: "",
+        matriculation: "",
+        workload: "",
+    })
+  
+    function handleChange(e) {
+        setValues(values => ({
+            ...values,
+            [e.target.id]: e.target.value,
+        }))
+    }
+  
+    function handleSubmit(e) {
+        e.preventDefault()
+        Inertia.post('/employee', values)
+    }
+
     const page = 
     <div className="row">
         <div className="col-12 col-lg-12">
             <div className="card">
-                <div className="card-header">
-                    <div className="row">
-                        <div className="col">
-                            <h3 style={{ color: 'black' }}>Funcionários</h3>
-                        </div>
-                        <div className="col">
-                            <div className="card-action">
-                                <InertiaLink href={ route('employee.create') } className="btn btn-light">
-                                    <i className="icon-plus"></i>
-                                </InertiaLink>
-                            </div>
-                        </div>
-                    </div>
+                <div className="card-header mt-2">                                            
+                    <h3 style={{ color: 'black' }}>Criar funcionário</h3>                                                
                 </div>
 
                 <div className="card-body">
-                    <div className="table-responsive">
-                        <table className="table align-items-center table-flush table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Matrícula</th>
-                                    <th scope="col">Carga horária</th>
-                                    <th scope="col">Telefone</th>
-                                    <th scope="col">Opções</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">João</th>
-                                    <th scope="row">1212212</th>
-                                    <th scope="row">12 hr</th>
-                                    <th scope="row">99 99999-9999</th>
-                                    <td>
-                                        <div className="d-flex flex-row justify-content-around">
-                                            <InertiaLink className="me-2"
-                                                href={ route('employee.edit', 1) }>
-                                                <i className="icon-pencil"></i>
-                                            </InertiaLink>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="name" style={{ color: 'black' }}>Nome</label> <br/>
+                        <input id="name" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.name} /> <br/>
+                        {errors.name && <div>{errors.name}</div>} <br/>
 
-                                            <InertiaLink className="me-2"
-                                                href={ route('employee.show', 1) } method="">
-                                                <i className="icon-user"></i>
-                                            </InertiaLink>
+                        <label htmlFor="matriculation" style={{ color: 'black' }}>Matrícula</label> <br/>
+                        <input id="matriculation" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.matriculation} /> <br/>
+                        {errors.matriculation && <div>{errors.matriculation}</div>} <br/>
 
-                                            <InertiaLink>
-                                                <i className="icon-trash"></i>
-                                            </InertiaLink>
-
-                                            <form id="1"
-                                                action={ route('employee.destroy', 1) }
-                                                method="POST">
-                                                
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <label htmlFor="workload" style={{ color: 'black' }}>Carga Horária</label> <br/>
+                        <input id="workload" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.workload} /> <br/>
+                        {errors.workload && <div>{errors.workload}</div>} <br/>
+                        <button type="submit" style={{ outline: '1px black solid' }} >Enviar</button>
+                    </form>            
                 </div>
             </div>
         </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Http\Requests\EmployeeRequestStore;
+use App\Http\Requests\EmployeeRequestUpdate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\URL;
@@ -40,9 +42,10 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(EmployeeRequestStore $request)
+    {    
+        Employee::create($request->validated());
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -53,8 +56,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        return Inertia::render('Employee/show');
-
+        $employee = Employee::find($id);
+        return Inertia::render('Employee/show', ['employee'=>$employee]);
     }
 
     /**
@@ -65,7 +68,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        return Inertia::render('Employee/edit');
+        $employee = Employee::find($id);
+        return Inertia::render('Employee/edit', ['employee'=>$employee]);
 
     }
 
@@ -76,9 +80,12 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeRequestUpdate $request, $id)
     {
-        //
+        $employee = Employee::find($id);
+        $employee->update($request->validated());
+        return redirect()->route('employee.index');
+
     }
 
     /**
@@ -89,6 +96,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Employee::find($id)->delete();
+        return redirect()->route('employee.index');
     }
 }
