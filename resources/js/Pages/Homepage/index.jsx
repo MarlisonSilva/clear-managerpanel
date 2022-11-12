@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from '@/components/Layout';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import ReceiverMap from '../../components/ReceiverMap';
-import SenderMap from '../../components/SenderMap';
+import ReceiverMap from '@/components/ReceiverMap';
+import SenderMap from '@/components/SenderMap';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/inertia-react';
 

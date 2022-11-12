@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom';
-import Layout from '../../components/Layout';
+import Layout from '@/components/Layout';
 import { usePage } from '@inertiajs/inertia-react'
 import { Inertia } from '@inertiajs/inertia'
 
