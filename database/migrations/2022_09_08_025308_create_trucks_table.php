@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('trucks', function (Blueprint $table) {
             $table->id()->unique();
             $table->char('name', 45)->nullable($value = false);
-            $table->time('activated_time');
+            $table->time('activated_time')->default('00:00:00');
             $table->float('mileage', 6, 2)->default(0);
             $table->boolean('status')->default(false);
             $table->timestamps();

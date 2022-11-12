@@ -47,7 +47,7 @@ export default function employeeCreate(props) {
                         <label htmlFor="workload" style={{ color: 'black' }}>Carga Horária</label> <br/>
                         <input id="workload" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.workload} /> <br/>
                         {errors.workload && <div>{errors.workload}</div>} <br/>
-                        <button type="submit" style={{ outline: '1px black solid' }} >Enviar</button>
+                        <button type="submit" className="btn btn-primary btn-sm">Enviar</button>
                     </form>            
                 </div>
             </div>

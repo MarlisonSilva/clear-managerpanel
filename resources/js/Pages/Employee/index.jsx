@@ -1,9 +1,7 @@
 import React from 'react';
-import Example from '../../components/Example';
 import Layout from '../../components/Layout';
 import { Link } from '@inertiajs/inertia-react';
 import { InertiaLink } from '@inertiajs/inertia-react';
-import { useForm } from '@inertiajs/inertia-react'
 import { Inertia } from '@inertiajs/inertia'
 
 export default function employeeIndex(props){

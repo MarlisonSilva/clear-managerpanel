@@ -1,58 +1,86 @@
 import React from 'react';
-import Example from '../../components/Example';
 import Layout from '../../components/Layout';
+import { Link } from '@inertiajs/inertia-react';
+import { InertiaLink } from '@inertiajs/inertia-react';
+import { Inertia } from '@inertiajs/inertia'
 
 const truckIndex = (props) => {
-    const page = 
-        <div className="row">
-            <div className="col lg-6">
-                <div className="card">
-                    <div className="card-header">
-                        <h5 className="card-title"  style={ {color: 'black'} }>Caminhões</h5>
-                    </div>
-                    <div className="card-body">
-                    
-                        <div className="table-responsive">
-                            <table className="table table-responsive">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Motorista</th>
-                                        <th scope="col">Horário</th>
-                                        <th scope="col">Zona de Funcionamento</th>
-                                        <th scope="col">Porcentagem</th>
-                                    </tr>
-                                </thead>    
+    var trucksTable = [];
+    console.log(props.trucks[0])
+    for (let i = 0; i < props.trucks.length; i++) {
+        const truck = props.trucks[i];
+        console.log(trucksTable)
+        if (truck.status)
+            var status = "Sim"
+        else 
+            var status = "Não"
 
-                                <tbody>
-                                    <tr>
-                                        <td>Januario</td>
-                                        <td>14h</td>
-                                        <td>Norte</td>
-                                        <td>45%</td>
-                                    </tr>
+        trucksTable.push(
+        <tr>
+            <td>{ truck.name }</td>
+            <td>{ truck.activated_time }</td>
+            <td>{ truck.mileage } km</td>
+            <td>{ status }</td>            
+            <td>
+                <div>
+                    <InertiaLink href={ route('truck.edit', truck.id) } className="btn btn-primary btn-sm mx-1">
+                        <i className="icon-pencil"></i> 
+                    </InertiaLink>
 
-                                    <tr>
-                                        <td>Seu Madruga</td>
-                                        <td>13h</td>
-                                        <td>Sul</td>
-                                        <td>56%</td>
-                                        
-                                    </tr>
+                    <InertiaLink href={ route('truck.show', truck.id) } className="btn btn-primary btn-sm mx-1">
+                        <i className="icon-eye"></i>
+                    </InertiaLink>
 
-                                    <tr>
-                                        <td>Armando Cesar Coelho</td>
-                                        <td>12h</td>
-                                        <td>Leste</td>
-                                        <td>95%</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>  
-                    </div>  
+                    <Link onClick={ (e) => { e.preventDefault(); Inertia.delete('/truck/'+truck.id, ); } } className="btn btn-primary btn-sm mx-1">
+                        <i className="icon-trash"></i>
+                    </Link>
                 </div>
-            </div>
-        </div>;
+            </td>
+        </tr>);
+    }
 
+    
+    var page = 
+    <div className="row">
+        <div className="col lg-6">
+            <div className="card">
+                <div className="card-header">
+                    <div className="row mt-2">
+                        <div className="col">
+                            <h3 style={{ color: 'black' }}>Caminhões</h3>
+                        </div>
+                        <div className="col">
+                            <div className="card-action">
+                                <InertiaLink href={ route('truck.create') } className="btn btn-dark">
+                                    <i className="icon-plus"></i>
+                                </InertiaLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>         
+                    <div className="card-body">
+                
+                    <div className="table-responsive">
+                        <table className="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Tempo ativo</th>
+                                    <th scope="col">Quilometragem</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                { trucksTable }
+                            </tbody>
+                        </table>
+                    </div>  
+                </div>  
+            </div>
+        </div>
+    </div>;
     return (
         <Layout brand={ page } auth={props.auth}/>
     );

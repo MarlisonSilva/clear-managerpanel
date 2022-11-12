@@ -13,7 +13,7 @@ class TruckRequestStore extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class TruckRequestStore extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:200',
+        ];        
+    }
+    
+    public function messages() 
+    {
+        return [
+            'name.required' => 'O nome é obrigatório',
+            'name.max' => 'O nome é muito longo',
         ];
     }
 }
