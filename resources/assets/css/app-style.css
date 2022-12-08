@@ -86,9 +86,6 @@ select option {
    color: #fff !important;
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-	color: #ffffff;
-}
 .h1, h1 {
 	font-size: 48px;
     line-height: 52px;
@@ -1656,7 +1653,6 @@ body.bg-theme1 {
 }
 
 label {
-    color: rgba(255, 255, 255, 0.75);
     font-size: .75rem;
     text-transform: uppercase;
     letter-spacing: 1px;

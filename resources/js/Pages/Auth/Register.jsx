@@ -32,7 +32,7 @@ export default function Register() {
 
     return (
         <GuestLayout>
-            <Head title="Register" />
+            <Head title="Registrar-se" />
 
             <form onSubmit={submit}>
                 <div>
@@ -100,13 +100,13 @@ export default function Register() {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
+                    <button className="btn btn-primary mt-2" processing={processing}>
+                        Criar conta
+                    </button>
+                    <br />
                     <Link href={route('login')} className="underline text-sm text-gray-600 hover:text-gray-900">
-                        Already registered?
+                        Já tem uma conta?
                     </Link>
-
-                    <PrimaryButton className="ml-4" processing={processing}>
-                        Register
-                    </PrimaryButton>
                 </div>
             </form>
         </GuestLayout>

@@ -32,7 +32,7 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <GuestLayout>
-            <Head title="Log in" />
+            <Head title="Entrar" />
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
@@ -44,7 +44,7 @@ export default function Login({ status, canResetPassword }) {
                         type="text"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="mt-1 form-control"
                         autoComplete="username"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -60,7 +60,7 @@ export default function Login({ status, canResetPassword }) {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="mt-1 form-control"
                         autoComplete="current-password"
                         handleChange={onHandleChange}
                     />
@@ -69,26 +69,29 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="block mt-4">
-                    <label className="flex items-center">
+                    <label className="d-flex align-items-center">
                         <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
 
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                        <span className="ms-1 text-sm text-gray-600">Remember me</span>
                     </label>
                 </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
+                {canResetPassword && (
                         <Link
                             href={route('password.request')}
                             className="underline text-sm text-gray-600 hover:text-gray-900"
                         >
-                            Forgot your password?
+                            Esqueci minha senha!
                         </Link>
                     )}
+                <div className="d-flex align-items-center justify-content-end mt-3">
+                    
 
-                    <PrimaryButton className="ml-4" processing={processing}>
-                        Log in
-                    </PrimaryButton>
+                    <button className="btn btn-primary mt-1 mb-2 ms-3">
+                        Entrar
+                    </button>
+                </div>
+                <div className="d-flex justify-content-center mt-3">    
+                    Não tem uma conta? <Link href={ route('register') }>Criar conta</Link>
                 </div>
             </form>
         </GuestLayout>
