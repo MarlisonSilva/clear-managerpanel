@@ -42,7 +42,7 @@ export default function Register() {
                         type="text"
                         name="name"
                         value={data.name}
-                        className="mt-1 block w-full"
+                        className="mt-1 form-control"
                         autoComplete="name"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -59,7 +59,7 @@ export default function Register() {
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="mt-1 form-control"
                         autoComplete="username"
                         handleChange={onHandleChange}
                         required
@@ -75,7 +75,7 @@ export default function Register() {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="mt-1 form-control"
                         autoComplete="new-password"
                         handleChange={onHandleChange}
                         required
@@ -91,7 +91,7 @@ export default function Register() {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
+                        className="mt-1 form-control"
                         handleChange={onHandleChange}
                         required
                     />
@@ -99,15 +99,16 @@ export default function Register() {
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    <button className="btn btn-primary mt-2" processing={processing}>
+                <div className="d-flex align-items-center justify-content-end mt-3">
+                    <button className="btn btn-sm btn-primary mt-2" processing={processing}>
                         Criar conta
-                    </button>
-                    <br />
-                    <Link href={route('login')} className="underline text-sm text-gray-600 hover:text-gray-900">
-                        Já tem uma conta?
-                    </Link>
+                    </button>                                        
                 </div>
+                <div className="text-center">
+                        <Link href={route('login')}>
+                            Já tem uma conta?
+                        </Link>
+                    </div>
             </form>
         </GuestLayout>
     );
