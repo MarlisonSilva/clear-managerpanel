@@ -48,7 +48,7 @@ const zoneIndex = (props) => {
                 <div className="card-header">
                     <div className="row mt-2">
                         <div className="col">
-                            <h3 style={{ color: 'black' }}>Zonas</h3>
+                            <h3>Zonas</h3>
                         </div>
                         <div className="col">
                             <div className="card-action">

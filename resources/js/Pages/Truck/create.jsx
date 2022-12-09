@@ -29,14 +29,14 @@ export default function truckCreate(props) {
         <div className="col-12 col-lg-12">
             <div className="card">
                 <div className="card-header mt-2">                                            
-                    <h3 style={{ color: 'black' }}>Criar caminhão</h3>                                                
+                    <h3>Criar caminhão</h3>                                                
                 </div>
 
                 <div className="card-body">
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="name" style={{ color: 'black' }}>Nome</label> <br/>
-                        <input id="name" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.name} /> <br/>
-                        {errors.name && <div>{errors.name}</div>} <br/>
+                        <label htmlFor="name">Nome</label>
+                        <input id="name" className='form-control mb-3' onChange={handleChange} value={values.name} />
+                        {errors.name && <div>{errors.name}</div>}
                         <button type="submit" className="btn btn-primary btn-sm">Enviar</button>
 
                     </form>            

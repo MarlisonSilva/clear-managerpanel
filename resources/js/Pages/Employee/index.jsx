@@ -43,7 +43,7 @@ export default function employeeIndex(props){
                 <div className="card-header">
                     <div className="row mt-2">
                         <div className="col">
-                            <h3 style={{ color: 'black' }}>Funcionários</h3>
+                            <h3>Funcionários</h3>
                         </div>
                         <div className="col">
                             <div className="card-action">

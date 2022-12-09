@@ -30,23 +30,23 @@ export default function employeeCreate(props) {
     <div className="row">
         <div className="col-12 col-lg-12">
             <div className="card">
-                <div className="card-header mt-2">                                            
-                    <h3 style={{ color: 'black' }}>Criar funcionário</h3>                                                
+                <div className="card-header">                                            
+                    <h3>Criar funcionário</h3>                                                
                 </div>
 
                 <div className="card-body">
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="name" style={{ color: 'black' }}>Nome</label> <br/>
-                        <input id="name" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.name} /> <br/>
-                        {errors.name && <div>{errors.name}</div>} <br/>
+                        <label htmlFor="name">Nome</label>
+                        <input id="name" className='form-control mb-2' onChange={handleChange} value={values.name} />
+                        {errors.name && <div>{errors.name}</div>}
 
-                        <label htmlFor="matriculation" style={{ color: 'black' }}>Matrícula</label> <br/>
-                        <input id="matriculation" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.matriculation} /> <br/>
-                        {errors.matriculation && <div>{errors.matriculation}</div>} <br/>
+                        <label htmlFor="matriculation">Matrícula</label>
+                        <input id="matriculation" className='form-control mb-2' onChange={handleChange} value={values.matriculation} />
+                        {errors.matriculation && <div>{errors.matriculation}</div>}
 
-                        <label htmlFor="workload" style={{ color: 'black' }}>Carga Horária</label> <br/>
-                        <input id="workload" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.workload} /> <br/>
-                        {errors.workload && <div>{errors.workload}</div>} <br/>
+                        <label htmlFor="workload">Carga Horária</label>
+                        <input id="workload" className='form-control mb-3' onChange={handleChange} value={values.workload} />
+                        {errors.workload && <div>{errors.workload}</div>}
                         <button type="submit" className="btn btn-primary btn-sm">Enviar</button>
                     </form>            
                 </div>

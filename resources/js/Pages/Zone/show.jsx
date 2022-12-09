@@ -16,7 +16,7 @@ function zoneShow(props) {
                 <div className="card-header">                                            
                     <div className="row mt-2">
                         <div className="col">
-                            <h3 style={{ color: 'black' }}>{ props.zone.name }</h3>
+                            <h3>{ props.zone.name }</h3>
                         </div>
                         <div className="col">
                             <div className="card-action">
@@ -29,14 +29,21 @@ function zoneShow(props) {
                 </div>
 
                 <div className="card-body">
-                    <ul>
-                        <li>ID: { props.zone.id }</li>
-                        <li>Nome: { props.zone.name }</li>
-                        <li>Horário de início do funcionamento: { props.zone.hour_start_op }</li>
-                        <li>Horário de término do funcionamento: { props.zone.hour_end_op }</li>
-                        <li>Porcentagem: { props.zone.percentage }%</li>
-                        <li>Ativo? { status }</li>
-                    </ul>          
+ 
+                    <dl class="row">
+                            <dt class="col-md-4">ID</dt>
+                            <dd class="col-md-8">{props.zone.id}</dd>
+                            <dt class="col-md-4">Nome</dt>
+                            <dd class="col-md-8">{props.zone.name}</dd>
+                            <dt class="col-md-4">Horário de início do funcionamento</dt>
+                            <dd class="col-md-8">{props.zone.hour_start_op}</dd>
+                            <dt class="col-md-4">Horário de término do funcionamento</dt>
+                            <dd class="col-md-8">{props.zone.hour_end_op}</dd>
+                            <dt class="col-md-4">Porcentagem</dt>
+                            <dd class="col-md-8">{props.zone.percentage} %</dd>
+                            <dt class="col-md-4">Ativo?</dt>
+                            <dd class="col-md-8">{status}</dd>
+                        </dl>
                 </div>
             </div>
         </div>

@@ -35,21 +35,21 @@ function zoneEdit(props) {
 
                 <div className="card-body">
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="name" style={{ color: 'black' }}>Nome</label> <br/>
-                        <input id="name" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.name} /> <br/>
-                        {errors.name && <div>{errors.name}</div>} <br/>
+                        <label htmlFor="name">Nome</label>
+                        <input id="name" className='form-control mb-2' onChange={handleChange} value={values.name} />
+                        {errors.name && <div>{errors.name}</div>}
 
-                        <label htmlFor="hour_start_op" style={{ color: 'black' }}>Hora de início do funcionamento</label> <br/>
-                        <input id="hour_start_op" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.hour_start_op} /> <br/>
-                        {errors.hour_start_op && <div>{errors.hour_start_op}</div>} <br/>
+                        <label htmlFor="hour_start_op">Hora de início do funcionamento</label>
+                        <input id="hour_start_op" className='form-control mb-2' onChange={handleChange} value={values.hour_start_op} />
+                        {errors.hour_start_op && <div>{errors.hour_start_op}</div>}
 
-                        <label htmlFor="hour_end_op" style={{ color: 'black' }}>Hora de término do funcionamento</label> <br/>
-                        <input id="hour_end_op" onChange={handleChange} style={{ outline: '1px black solid' }} value={values.hour_end_op} /> <br/>
-                        {errors.hour_end_op && <div>{errors.hour_end_op}</div>} <br/>
+                        <label htmlFor="hour_end_op">Hora de término do funcionamento</label>
+                        <input id="hour_end_op" className='form-control mb-2' onChange={handleChange} value={values.hour_end_op} />
+                        {errors.hour_end_op && <div>{errors.hour_end_op}</div>}
 
                         <button type="submit" className="btn btn-primary btn-sm">Enviar</button>
 
-                    </form>          
+                    </form>            
                 </div>
             </div>
         </div>
